@@ -20,18 +20,39 @@ public class ConnectionUtil {
             Class.forName("com.mysql.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost/extra-project", "root", "");
 
-            String sql_stmt = "CREATE TABLE IF NOT EXISTS `wip_users` (\n" +
-                    "    `id` SMALLINT(5) UNSIGNED NOT NULL AUTO_INCREMENT,\n" +
-                    "    `firstname` VARCHAR(45) NOT NULL,\n" +
-                    "    `lastname` VARCHAR(45) NOT NULL,\n" +
-                    "    `email` VARCHAR(50) DEFAULT NULL,\n" +
-                    "    `gender` VARCHAR(10) DEFAULT NULL,\n" +
-                    "    `dob` VARCHAR(10) DEFAULT NULL,\n" +
-                    "    PRIMARY KEY (`id`)\n" +
-                    ");";
+            String sql_products = "CREATE TABLE IF NOT EXISTS `products` (" +
+                    "    `id` SMALLINT(5) UNSIGNED NOT NULL AUTO_INCREMENT," +
+                    "    `name` VARCHAR(45) NOT NULL," +
+                    "    `description` VARCHAR(255) NOT NULL," +
+                    "    `price` VARCHAR(10) NOT NULL," +
+                    "    `company_id` SMALLINT(5) UNSIGNED DEFAULT NULL," +
+                    "    `category_id` SMALLINT(5) UNSIGNED DEFAULT NULL," +
+                    "    `user_id` SMALLINT(5) UNSIGNED DEFAULT NULL," +
+                    "    PRIMARY KEY (`id`)" +
+                    ")";
+            String sql_categories = " CREATE TABLE IF NOT EXISTS `categories` (" +
+                    "    `id` SMALLINT(5) UNSIGNED NOT NULL AUTO_INCREMENT," +
+                    "    `name` VARCHAR(45) NOT NULL," +
+                    "    PRIMARY KEY (`id`)" +
+                    ")";
 
-            preparedStatement = (PreparedStatement) con.prepareStatement(sql_stmt);
-            preparedStatement.executeUpdate();
+            String sql_companies = " CREATE TABLE IF NOT EXISTS `companies` (" +
+                    "    `id` SMALLINT(5) UNSIGNED NOT NULL AUTO_INCREMENT," +
+                    "    `name` VARCHAR(45) NOT NULL," +
+                    "    PRIMARY KEY (`id`)" +
+                    ")";
+            String sql_cart_shop = " CREATE TABLE IF NOT EXISTS `cart_shop` (" +
+                    "    `id` SMALLINT(5) UNSIGNED NOT NULL AUTO_INCREMENT," +
+                    "    `product_id` SMALLINT(5) UNSIGNED DEFAULT NULL," +
+                    "    `user_id` SMALLINT(5) UNSIGNED DEFAULT NULL," +
+                    "    PRIMARY KEY (`id`)" +
+                    ")";
+
+            Statement statement = (Statement) con.createStatement();
+            statement.execute(sql_products);
+            statement.execute(sql_categories);
+            statement.execute(sql_companies);
+            statement.execute(sql_cart_shop);
 
             return con;
         } catch (ClassNotFoundException | SQLException ex) {

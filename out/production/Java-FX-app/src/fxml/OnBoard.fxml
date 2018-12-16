@@ -12,39 +12,87 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TextArea?>
 <AnchorPane id="AnchorPane" prefHeight="564.0" prefWidth="1101.0" style="-fx-background-color: #FFF;" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.controllers.HomeController">
     <children>
-        <Pane prefHeight="575.0" prefWidth="429.0" style="-fx-background-color: #0C39FF;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+       <TextField fx:id="userId" prefHeight="32.0" prefWidth="58.0" promptText="userName" visible="false" />
+        <Pane fx:id="productsPane" prefHeight="575.0" prefWidth="429.0" style="-fx-background-color: #0C39FF;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
-                <ImageView fitHeight="52.0" fitWidth="52.0" layoutX="75.0" layoutY="51.0" pickOnBounds="true" preserveRatio="true">
-                    <image>
-                        <Image url="@../images/icons8_Google_Wallet_50px.png" />
-                    </image>
-                </ImageView>
-                <Label alignment="CENTER" layoutX="140.0" layoutY="54.0" prefHeight="23.0" prefWidth="173.0" text="Easy Wallet Control" textFill="WHITE">
-                    <font>
-                        <Font name="Segoe UI" size="18.0" />
-                    </font>
-                </Label>
-                <Label alignment="CENTER" layoutX="148.0" layoutY="77.0" prefHeight="23.0" prefWidth="114.0" text="Home/OnBoard User" textFill="WHITE">
-                    <font>
-                        <Font name="Segoe UI" size="12.0" />
-                    </font>
-                </Label>
-                <TextField fx:id="txtFirstname" layoutX="75.0" layoutY="159.0" prefHeight="32.0" prefWidth="278.0" promptText="firstname" />
-                <TextField fx:id="txtLastname" layoutX="75.0" layoutY="217.0" prefHeight="32.0" prefWidth="278.0" promptText="lastname" />
-                <TextField fx:id="txtEmail" layoutX="75.0" layoutY="276.0" prefHeight="32.0" prefWidth="278.0" promptText="email" />
-                <DatePicker fx:id="txtDOB" layoutX="75.0" layoutY="390.0" prefHeight="32.0" prefWidth="278.0" promptText="dob" />
-                <Button fx:id="btnSave" layoutX="76.0" layoutY="449.0" mnemonicParsing="false" onMouseClicked="#HandleEvents" prefHeight="32.0" prefWidth="278.0" styleClass="button2" stylesheets="@../styling/fullpackstyling.css" text="Save" />
-                <ComboBox fx:id="txtGender" editable="true" layoutX="76.0" layoutY="334.0" prefHeight="32.0" prefWidth="278.0" promptText="gender">
+                <TextField fx:id="txtNameProduct" layoutX="75.0" layoutY="116.0" prefHeight="32.0" prefWidth="278.0" promptText="Product Name" />
+                <TextArea fx:id="txtDescriptionProduct" layoutX="75.0" layoutY="174.0" prefHeight="64.0" prefWidth="278.0" promptText="Description of product" />
+                <TextField fx:id="txtPriceProduct" layoutX="75.0" layoutY="264.0" prefHeight="32.0" prefWidth="278.0" promptText="Price product" />
+                <!--<DatePicker fx:id="txtDOB" layoutX="75.0" layoutY="390.0" prefHeight="32.0" prefWidth="278.0" promptText="dob" />-->
+                <Button fx:id="btnSaveProduct" layoutX="76.0" layoutY="449.0" mnemonicParsing="false" onMouseClicked="#HandleEvents" prefHeight="32.0" prefWidth="278.0" styleClass="button2" stylesheets="@../styling/fullpackstyling.css" text="Add Product" />
+                <ComboBox fx:id="txtCompaniesProduct" editable="true" layoutX="76.0" layoutY="334.0" prefHeight="32.0" prefWidth="278.0" promptText="Companies for product">
+                </ComboBox>
+                <ComboBox fx:id="txtCategoriesProduct" editable="true" layoutX="76.0" layoutY="390.0" prefHeight="32.0" prefWidth="278.0" promptText="Categories for product">
                 </ComboBox>
             </children>
         </Pane>
-        <TableView fx:id="tblData" layoutX="438.0" layoutY="71.0" prefHeight="488.0" prefWidth="651.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="438.0" AnchorPane.rightAnchor="12.0" AnchorPane.topAnchor="71.0">
-            <columnResizePolicy>
-                <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-            </columnResizePolicy>
-        </TableView>
+        <Pane fx:id="productsPaneUpdate" prefHeight="575.0" prefWidth="429.0" style="-fx-background-color: #0C39FF;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" visible="false">
+            <children>
+                <TextField fx:id="txtProductId" layoutX="75.0" layoutY="116.0" prefHeight="32.0" prefWidth="278.0" promptText="Product ID" visible="false" />
+                <TextField fx:id="txtNameProductUpdate" layoutX="75.0" layoutY="116.0" prefHeight="32.0" prefWidth="278.0" promptText="Product Name" />
+                <TextArea fx:id="txtDescriptionProductUpdate" layoutX="75.0" layoutY="174.0" prefHeight="64.0" prefWidth="278.0" promptText="Description of product" />
+                <TextField fx:id="txtPriceProductUpdate" layoutX="75.0" layoutY="264.0" prefHeight="32.0" prefWidth="278.0" promptText="Price product" />
+                <!--<DatePicker fx:id="txtDOB" layoutX="75.0" layoutY="390.0" prefHeight="32.0" prefWidth="278.0" promptText="dob" />-->
+                <Button fx:id="btnUpdateProduct" layoutX="76.0" layoutY="449.0" mnemonicParsing="false" onMouseClicked="#HandleEvents" prefHeight="32.0" prefWidth="278.0" styleClass="button2" stylesheets="@../styling/fullpackstyling.css" text="Update Product" />
+                <ComboBox fx:id="txtCompaniesProductUpdate" editable="true" layoutX="76.0" layoutY="334.0" prefHeight="32.0" prefWidth="278.0" promptText="Companies for product">
+                </ComboBox>
+                <ComboBox fx:id="txtCategoriesProductUpdate" editable="true" layoutX="76.0" layoutY="390.0" prefHeight="32.0" prefWidth="278.0" promptText="Categories for product">
+                </ComboBox>
+            </children>
+        </Pane>
+        <Pane fx:id="categoriesPane" prefHeight="575.0" prefWidth="429.0" style="-fx-background-color: #0C39FF;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" visible="false">
+            <children>
+                <TextField fx:id="txtNameCategory" layoutX="75.0" layoutY="180.0" prefHeight="32.0" prefWidth="278.0" promptText="Category Name" />
+                <Button fx:id="btnSaveCategory" layoutX="76.0" layoutY="225.0" mnemonicParsing="false" onMouseClicked="#HandleEvents" prefHeight="32.0" prefWidth="278.0" styleClass="button2" stylesheets="@../styling/fullpackstyling.css" text="Add Category" />
+                </children>
+        </Pane>
+        <Pane fx:id="companiesPane" prefHeight="575.0" prefWidth="429.0" style="-fx-background-color: #0C39FF;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" visible="false">
+            <children>
+                <TextField fx:id="txtNameCompany" layoutX="75.0" layoutY="180.0" prefHeight="32.0" prefWidth="278.0" promptText="Company Name" />
+                <Button fx:id="btnSaveCompany" layoutX="76.0" layoutY="225.0" mnemonicParsing="false" onMouseClicked="#HandleEvents" prefHeight="32.0" prefWidth="278.0" styleClass="button2" stylesheets="@../styling/fullpackstyling.css" text="Add Company" />
+            </children>
+        </Pane>
+
+
+        <TabPane layoutX="438.0" layoutY="71.0" prefHeight="488.0" prefWidth="651.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="438.0" AnchorPane.rightAnchor="12.0" AnchorPane.topAnchor="71.0" tabClosingPolicy="UNAVAILABLE">
+            <tabs>
+                <Tab fx:id="tabProducts" text="Products" onSelectionChanged="#tabProductsAction">
+                    <TableView fx:id="tblData" layoutX="438.0" layoutY="71.0" prefHeight="488.0" prefWidth="651.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="438.0" AnchorPane.rightAnchor="12.0" AnchorPane.topAnchor="71.0">
+                        <columnResizePolicy>
+                            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                        </columnResizePolicy>
+                    </TableView>
+                </Tab>
+                <Tab fx:id="tabCategories" text="Categories" onSelectionChanged="#tabCategoriesAction">
+                    <TableView fx:id="tblCategories" layoutX="438.0" layoutY="71.0" prefHeight="488.0" prefWidth="651.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="438.0" AnchorPane.rightAnchor="12.0" AnchorPane.topAnchor="71.0">
+                        <columnResizePolicy>
+                            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                        </columnResizePolicy>
+                    </TableView>
+                </Tab>
+                <Tab fx:id="tabCompanies" text="Companies"  onSelectionChanged="#tabCompaniesAction">
+                    <TableView fx:id="tblCompanies" layoutX="438.0" layoutY="71.0" prefHeight="488.0" prefWidth="651.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="438.0" AnchorPane.rightAnchor="12.0" AnchorPane.topAnchor="71.0">
+                        <columnResizePolicy>
+                            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                        </columnResizePolicy>
+                    </TableView>
+                </Tab>
+                <Tab fx:id="tabCartShop" text="Cart Shop" onSelectionChanged="#tabCartShopAction">
+                    <TableView fx:id="tblCartShop" layoutX="438.0" layoutY="71.0" prefHeight="488.0" prefWidth="651.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="438.0" AnchorPane.rightAnchor="12.0" AnchorPane.topAnchor="71.0">
+                        <columnResizePolicy>
+                            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                        </columnResizePolicy>
+                    </TableView>
+                </Tab>
+            </tabs>
+        </TabPane>
         <Label fx:id="lblStatus" layoutX="438.0" layoutY="26.0" prefHeight="32.0" prefWidth="354.0" text="Status :" />
+        <Button fx:id="btnLogout" layoutX="15.0" layoutY="15.0" style="-fx-background-color: #0C39FF;" mnemonicParsing="false" onMouseClicked="#handleLogoutAction" prefHeight="32.0" prefWidth="278.0" styleClass="button2" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" stylesheets="@../styling/fullpackstyling.css" text="Logout" />
+
     </children>
 </AnchorPane>

@@ -23,7 +23,7 @@ public class Main extends Application {
     //define your offsets here
     private double xOffset = 0;
     private double yOffset = 0;
-
+    private static Integer userId;
     @Override
     public void start(Stage stage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("/src/fxml/Login.fxml"));
@@ -60,6 +60,14 @@ public class Main extends Application {
      */
     public static void main(String[] args) {
         launch(args);
+    }
+
+    public static Integer getUserId() {
+        return userId;
+    }
+
+    public static void setUserId(Integer userId) {
+        Main.userId = userId;
     }
 
 }

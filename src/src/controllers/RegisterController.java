@@ -40,9 +40,11 @@ public class RegisterController  implements Initializable{
     @FXML
     private Button btnSignup;
 
+    @FXML
+    private Button btnSignin;
+
     Connection con = null;
     PreparedStatement preparedStatement = null;
-    ResultSet resultSet = null;
 
     public RegisterController() {
         con = ConnectionUtil.conDB();
@@ -70,6 +72,22 @@ public class RegisterController  implements Initializable{
                 }
 
             }
+        }
+        if (event.getSource() == btnSignin) {
+            try {
+                //add you loading or delays - ;-)
+                Node node = (Node) event.getSource();
+                Stage stage = (Stage) node.getScene().getWindow();
+                //stage.setMaximized(true);
+                stage.close();
+                Scene scene = new Scene(FXMLLoader.load(getClass().getResource("/src/fxml/Login.fxml")));
+                stage.setScene(scene);
+                stage.show();
+
+            } catch (IOException ex) {
+                System.err.println(ex.getMessage());
+            }
+
         }
     }
 
@@ -107,25 +125,18 @@ public class RegisterController  implements Initializable{
                 preparedStatement.setString(1, name);
                 preparedStatement.setString(2, email);
                 preparedStatement.setString(3, password);
-                resultSet = preparedStatement.executeQuery();
+                preparedStatement.executeUpdate();
 
-                if (!resultSet.next()) {
-                    lblErrors.setTextFill(Color.TOMATO);
-                    lblErrors.setText("Enter Correct Email/Password");
-                    System.err.println("Wrong Register --///");
-                    return "Error";
-
-                } else {
-                    lblErrors.setTextFill(Color.GREEN);
-                    lblErrors.setText("Register Successful..Redirecting..");
-                    System.out.println("Successfull Register");
-                    return "Success";
-                }
-
+                lblErrors.setTextFill(Color.GREEN);
+                lblErrors.setText("Register Successful..Redirecting..");
+                System.out.println("Successfull Register");
+                return "Success";
 
             } catch (SQLException ex) {
-                System.err.println(ex.getMessage());
-                return "Exception";
+                lblErrors.setTextFill(Color.TOMATO);
+                lblErrors.setText("Enter Correct Email/Password");
+                System.err.println("Wrong Register --///");
+                return "Error";
             }
         }
     }
