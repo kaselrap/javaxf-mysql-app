@@ -23,8 +23,8 @@ public class ConnectionUtil {
             String sql_user = "CREATE TABLE IF NOT EXISTS `user` (" +
                     "    `id` SMALLINT(5) UNSIGNED NOT NULL AUTO_INCREMENT," +
                     "    `name` VARCHAR(45) NOT NULL," +
-                    "    `email` VARCHAR(255) NOT NULL," +
-                    "    `password` VARCHAR(10) NOT NULL," +
+                    "    `email` VARCHAR(45) NOT NULL," +
+                    "    `password` VARCHAR(45) NOT NULL," +
                     "    PRIMARY KEY (`id`)" +
                     ")";
 
