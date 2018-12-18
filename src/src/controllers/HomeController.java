@@ -231,7 +231,7 @@ public class HomeController implements Initializable {
                 System.out.println(productSplit[2].substring(1));
                 System.out.println(productSplit[3].substring(1));
                 System.out.println(productSplit[4].substring(1));
-                System.out.println(productSplit[5].substring(1).replace("]", ""));
+                //System.out.println(productSplit[5].substring(1).replace("]", ""));
 
                 productsPane.setVisible(false);
                 productsPaneUpdate.setVisible(true);

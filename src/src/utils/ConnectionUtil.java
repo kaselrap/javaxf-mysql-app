@@ -20,6 +20,14 @@ public class ConnectionUtil {
             Class.forName("com.mysql.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost/extra-project", "root", "");
 
+            String sql_user = "CREATE TABLE IF NOT EXISTS `user` (" +
+                    "    `id` SMALLINT(5) UNSIGNED NOT NULL AUTO_INCREMENT," +
+                    "    `name` VARCHAR(45) NOT NULL," +
+                    "    `email` VARCHAR(255) NOT NULL," +
+                    "    `password` VARCHAR(10) NOT NULL," +
+                    "    PRIMARY KEY (`id`)" +
+                    ")";
+
             String sql_products = "CREATE TABLE IF NOT EXISTS `products` (" +
                     "    `id` SMALLINT(5) UNSIGNED NOT NULL AUTO_INCREMENT," +
                     "    `name` VARCHAR(45) NOT NULL," +
@@ -49,6 +57,7 @@ public class ConnectionUtil {
                     ")";
 
             Statement statement = (Statement) con.createStatement();
+            statement.execute(sql_user);
             statement.execute(sql_products);
             statement.execute(sql_categories);
             statement.execute(sql_companies);

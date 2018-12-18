@@ -125,29 +125,29 @@ public class LoginController implements Initializable {
                             "       companies.name as company_name" +
                             " FROM products" +
                             " INNER JOIN companies ON products.company_id = companies.id" +
-                            " GROUP BY company_name");
+                            " GROUP BY companies.name");
             fetRowList(tblDataCompanie,
                     "SELECT" +
                             "       COUNT(*) as countProductsInCompany," +
                             "       companies.name as company_name" +
                             " FROM products" +
                             " INNER JOIN companies ON products.company_id = companies.id" +
-                            " GROUP BY company_name");
+                            " GROUP BY companies.name");
 
             fetColumnList(tblDataCategorie,
                     "SELECT" +
                             "       COUNT(*) as countProductsInCategory," +
                             "       categories.name as category_name" +
                             " FROM products" +
-                            " INNER JOIN categories ON products.company_id = categories.id" +
-                            " GROUP BY category_name");
+                            " INNER JOIN categories ON products.category_id = categories.id" +
+                            " GROUP BY categories.name");
             fetRowList(tblDataCategorie,
                     "SELECT" +
                             "       COUNT(*) as countProductsInCategory," +
                             "       categories.name as category_name" +
                             " FROM products" +
-                            " INNER JOIN categories ON products.company_id = categories.id" +
-                            " GROUP BY category_name");
+                            " INNER JOIN categories ON products.category_id = categories.id" +
+                            " GROUP BY categories.name");
         }
     }
 
